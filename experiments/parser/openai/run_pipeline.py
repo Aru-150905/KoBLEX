@@ -49,8 +49,8 @@ def main():
     MODEL = "gpt-4o"
     
     # Input files
-    INPUT_FILE = "source/koblex.jsonl"
-    SEARCH_POOL = "source/statute.jsonl"
+    INPUT_FILE = "../../source/koblex.jsonl"   # data lives in experiments/source/
+    SEARCH_POOL = "../../source/statute.jsonl"
     
     print("Legal Question Answering Pipeline (OpenAI)")
     print("="*50)
