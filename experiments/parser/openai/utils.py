@@ -200,5 +200,5 @@ async def get_completion_list(datapoints, max_parallel_calls, model_name):
     """Get completions for a list of datapoints with parallel processing."""
     semaphore = asyncio.Semaphore(value=max_parallel_calls)
 
-    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(10)) as session:
+    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=120)) as session:  # was a 10 s total limit
         return await asyncio.gather(*[get_completion(datapoint, model_name, session, semaphore) for datapoint in datapoints])

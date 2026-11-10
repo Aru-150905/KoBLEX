@@ -34,7 +34,7 @@ def process_completions(completions: List[tuple]) -> List[str]:
     """Process OpenAI completions and extract answers."""
     answers = []
     
-    for pred, _ in completions:
+    for pred, _ in (c if c else ('', None) for c in completions):  # failed calls return None
         # Extract answer portion
         answer = pred.split("Answer:")[-1].strip()
         answers.append(answer)

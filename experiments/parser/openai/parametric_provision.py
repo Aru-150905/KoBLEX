@@ -40,7 +40,7 @@ def process_completions(completions: List[tuple]) -> List[List[str]]:
     """Process OpenAI completions and extract results."""
     results = []
     
-    for pred, _ in completions:
+    for pred, _ in (c if c else ('', None) for c in completions):  # failed calls return None
         block = extract_first_list(pred)
         
         if block is None:
