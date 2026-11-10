@@ -64,11 +64,11 @@ def process_completions(completions: List[tuple], counts: List[int],
     
     for count, contexts_list in zip(counts, reranked):
         sel_per_q = []
-        for _ in range(count):
+        for i in range(count):
             pred, _ = completions[ptr]
             answer = pred.split("Answer:")[-1].strip()
             choice = int(answer) if answer.isdigit() and 0 <= int(answer) <= 9 else 0
-            sel_per_q.append(contexts_list[0][choice])
+            sel_per_q.append(contexts_list[i][choice])  # i-th sub-query's candidates, as in original script's re[i]
             ptr += 1
         selections.append(sel_per_q)
     
