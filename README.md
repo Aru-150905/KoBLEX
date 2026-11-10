@@ -1,3 +1,5 @@
+> **Reproduction fork.** This fork adds a reproduction of the paper and fixes to the original code. See [`reproduction/README.md`](reproduction/README.md) for results, fixes and how to run them. Original repository: [daehuikim/KoBLEX](https://github.com/daehuikim/KoBLEX).
+
 # KoBLEX: Open Legal Question Answering with Multi-hop Reasoning
 * Official Repository for paper [KoBLEX: Open Legal Question Answering with Multi-hop Reasoning](https://aclanthology.org/2025.emnlp-main.200/). 
 * This work will be presented at [EMNLP 2025](https://2025.emnlp.org/) conference.
