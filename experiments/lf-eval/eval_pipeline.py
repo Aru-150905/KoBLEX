@@ -172,8 +172,15 @@ def extract_predictions(data_list: List[Dict], mode: str = "nhop") -> tuple:
     combination_list = []
     
     for item in data_list:
+        # Saved files in results/ store {"answers": [{"answer": ..., "comb": [...]}, ...]}
+        # (or a plain string for no-retrieval runs) instead of "answer"/"provisions".
+        if 'answer' not in item and 'answers' in item:
+            ans = item['answers']
+            top = ans[0] if isinstance(ans, list) and ans else {'answer': ans if isinstance(ans, str) else '', 'comb': []}
+            item = {'answer': str(top.get('answer', '')), 'provisions': top.get('comb') or []}
         temp_answer = item['answer']
-        answer_list.append(temp_answer.split("<\think>")[0][:800] if len(temp_answer) > 0 else "")
+        # was "<\think>" (a tab character), so Qwen reasoning was never stripped
+        answer_list.append(temp_answer.split("</think>")[-1][:800] if len(temp_answer) > 0 else "")
         
         # Only append to combination_list if 'provisions' key exists
         if 'provisions' in item:
