@@ -1,0 +1,12 @@
+$ python3 -I reproduction/scripts/bm25_baseline.py .
+# run on 2026-11-10 06:21 UTC, Python 3.13.18, bm25s 0.3.16
+
+indexed 233544 provisions in 9s
+my BM25 run: P=22.4 R=20.9 F1=21.4 EM=7.1
+identical to saved retrieval for 218/226 questions
+  1-hop (n=57): F1=17.5
+  2-hop (n=127): F1=25.3
+  3-hop (n=42): F1=14.9
+real	0m12.702s
+user	0m12.127s
+sys	0m0.461s

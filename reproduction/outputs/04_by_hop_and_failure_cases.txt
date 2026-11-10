@@ -1,0 +1,45 @@
+$ python3 -I reproduction/scripts/analyse.py .
+# run on 2026-11-10 06:22 UTC, Python 3.13.18, bm25s 0.3.16
+
+hop  n   | parser_gpt4o ansF1/retF1 |  sp_or_gpt4o ansF1/retF1 |     sp_gpt4o ansF1/retF1 |  flare_gpt4o ansF1/retF1 |  ircot_gpt4o ansF1/retF1
+1    57 |         43.6/ 77.8 |         12.0/ 17.5 |         30.9/  0.0 |         33.9/ 40.4 |         24.3/ 22.3
+2   127 |         50.5/ 55.4 |         33.2/ 25.5 |         41.2/  0.0 |         38.4/ 31.9 |         37.2/ 26.5
+3    42 |         36.3/ 46.7 |         27.2/ 14.8 |         28.2/  0.0 |         23.0/ 19.6 |         23.5/ 18.2
+sp_or_gpt4o answers that refuse / say context is irrelevant: 26/226
+parser_gpt4o refusals: 0/226
+=== cases: ParSeR right provision, standard retrieval wrong
+[qa_92_1hop_149] Q: What punishment could Person A face for secretly entering Person B's house at night and stealing the gold necklace?
+  gold law: ['형법 330조 야간주거침입절도제330조(야간주거침입절도) 야간에 사람의 ']
+  std-retrieval got: ['도로교통법 26조 교통정리가 없는 교차로에서의 양보운전 1항① 교통정리를']
+  std answer: The provided context does not contain relevant legal information regarding the penalties for theft or burglary.
+  ParSeR F1=0.2353
+[qa_139_1hop_254] Q: Can Person A exercise their right to vote on election day?
+  gold law: ['공직선거법 18조 선거권이 없는 자 1항①선거일 현재 다음 각 호의 어느']
+  std-retrieval got: ['공직선거법 6조 선거권행사의 보장 1항①국가는 선거권자가 선거권을 행사할']
+  std answer: Context does not provide specific information regarding the voting rights of individuals currently serving a prison sentence. Therefore, based on the provided c
+  ParSeR F1=0.3077
+[qa_172_1hop_308] Q: When Person A and Person B settle a civil lawsuit in court and the terms of the settlement are recorded in the minutes of proceedings, what legal effect do these minutes have?
+  gold law: ['민사소송법 220조 화해, 청구의 포기ㆍ인낙조서의 효력제220조(화해, ']
+  std-retrieval got: ['중재법 31조 화해 3항③ 화해 중재판정은 해당 사건의 본안에 관한 중재']
+  std answer: 갑과 을이 민사소송 중 법정에서 화해하고, 그 화해 내용이 변론조서에 기록된 경우, 그 변론조서는 해당 사건의 본안에 관한 중재판정과 동일한 효력을 가진다.
+  ParSeR F1=0.3636
+=== cases: ParSeR retrieved wrong provision
+[qa_19_1hop_28] Q: Until what point can Person B exercise their right to claim damages against Person A?
+  gold answer: Person B must file a legal claim against Person A within one year from the date the goods were delivered, or the right to claim damages will be extinguished. However, this period may be extended by mu
+  gold law: ['상법 814조 운송인의 채권ㆍ채무의 소멸 1항①운송인의 송하인 또는 수하인에 대한']
+  ParSeR got: ['상법 919조 운송인의 채권의 시효제919조(운송인의 채권의 시효) 운송인의 송하']
+  ParSeR answer(ko): 을은 갑에 대한 손해배상청구권을 상품이 인도된 날로부터 2년간 행사하지 않으면 소멸시효가 완성된다.
+[qa_621_2hop_937] Q: Does Person A have standing to file an annulment lawsuit against the expropriation procedure related to the regional development project? Additionally, what are the requirements for granting a stay of execution if an annulment lawsuit is filed?
+  gold answer: Person A has a legal interest in seeking the annulment of the expropriation order concerning his property, and therefore, he has standing to file an annulment lawsuit. Furthermore, if an annulment law
+  gold law: ['행정소송법 12조 원고적격제12조(원고적격) 취소소송은 처분등의 취소를 구할 법률', '행정소송법 23조 집행정지 2항②취소소송이 제기된 경우에 처분등이나 그 집행 또는']
+  ParSeR got: ['행정소송법 18조 행정심판과의 관계 2항②제1항 단서의 경우에도 다음 각호의 1에', '행정소송법 23조 집행정지 1항①취소소송의 제기는 처분등의 효력이나 그 집행 또는']
+  ParSeR answer(ko): 갑은 처분의 집행 또는 절차의 속행으로 생길 중대한 손해를 예방하여야 할 긴급한 필요가 있는 경우, 행정심판의 재결을 거치지 않고 취소소송을 제기할 수 있다. 또한, 취소소송이 제기된 경우에도 그 자체로 처분의 효력이나 집행에 영향을 주지 않으므로, 집행정지가 인정되려
+[qa_163_2hop_630_rand] Q: Who between Person A and Person C is eligible to receive the reward, and what is the annual limit on the reward that Person A can receive for reporting the refusal of cash receipt issuance?
+  gold answer: In cases of duplicate reports concerning the same issue, the reward is granted only to the first person who reported it, which in this case is Person A. Additionally, the reward that Person A can rece
+  gold law: ['국세기본법 시행령 65조 4 포상금의 지급 6항⑥법 제84조의2제1항제3호 또는 ', '국세기본법 시행령 65조 4 포상금의 지급 21항㉑ 법 제84조의2제1항 각 호의']
+  ParSeR got: ['국세기본법 84조 2 포상금의 지급 1항① 국세청장은 다음 각 호의 어느 하나에 ', '국세기본법 시행령 65조 4 포상금의 지급 18항⑱ 법 제84조의2제1항제7호에 ']
+  ParSeR answer(ko): 갑과 병 중 먼저 신고한 사람이 포상금을 받을 수 있습니다. 갑이 현금영수증 발급 거부에 대해 받을 수 있는 연간 포상금 한도는 5천만원입니다.
+ParSeR retrieved none of the gold provisions for 36/226 questions
+real	0m1.131s
+user	0m1.084s
+sys	0m0.044s

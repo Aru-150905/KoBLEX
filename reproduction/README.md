@@ -24,6 +24,8 @@ The paper reports that ParSeR beats standard retrieval by **+37.91 F1** with GPT
 | Own experiment: Korean character-bigram BM25 | Baseline F1 21.4 → 37.4, recall@100 51.8 → 75.6 | `scripts/bm25_variants.py` |
 | Full ParSeR run (GPT-4o + GPU reranker) | Notebook ready, not yet run | `notebook/KoBLEX_ParSeR_reproduction.ipynb` (Colab, T4) |
 
+The raw terminal output of every run is saved in [`outputs/`](outputs/), so the numbers can be checked without running anything.
+
 The full write-up, with the pipeline diagram, results, failure analysis and implications for Indian law, is in [`report/KoBLEX_ParSeR_Reproduction_Report.pdf`](report/KoBLEX_ParSeR_Reproduction_Report.pdf).
 
 ## Fixes to the original code

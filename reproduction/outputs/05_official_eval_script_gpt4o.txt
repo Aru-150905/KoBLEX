@@ -1,0 +1,64 @@
+# experiments/lf-eval/eval_pipeline.py (official script, with the fix commit) on the authors' saved GPT-4o outputs
+# LF-Eval (legal_fidelity) not run: needs an OpenAI API key
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/beamaggr_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.2283
+▶ Retrieval Precision: 0.2094
+▶ Retrieval   Recall : 0.1497
+▶ Retrieval       F1 : 0.1689
+▶ Retrieval       EM : 0.0354
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/cot_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.3234
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/cot_or_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.3068
+▶ Retrieval Precision: 0.2242
+▶ Retrieval   Recall : 0.2102
+▶ Retrieval       F1 : 0.2150
+▶ Retrieval       EM : 0.0708
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/flare_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.3437
+▶ Retrieval Precision: 0.3855
+▶ Retrieval   Recall : 0.3186
+▶ Retrieval       F1 : 0.3175
+▶ Retrieval       EM : 0.0442
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/ircot_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.3139
+▶ Retrieval Precision: 0.2617
+▶ Retrieval   Recall : 0.2507
+▶ Retrieval       F1 : 0.2391
+▶ Retrieval       EM : 0.0442
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/parser_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.4614
+▶ Retrieval Precision: 0.6405
+▶ Retrieval   Recall : 0.5937
+▶ Retrieval       F1 : 0.5941
+▶ Retrieval       EM : 0.2699
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/probtree_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.3391
+▶ Retrieval Precision: 0.2124
+▶ Retrieval   Recall : 0.1556
+▶ Retrieval       F1 : 0.1732
+▶ Retrieval       EM : 0.0398
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/selfask_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.0782
+▶ Retrieval Precision: 0.1239
+▶ Retrieval   Recall : 0.0678
+▶ Retrieval       F1 : 0.0855
+▶ Retrieval       EM : 0.0177
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/sp_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.3620
+
+$ python3 lf-eval/eval_pipeline.py --input_file ../results/sp_or_gpt4o.jsonl --gold_file source/koblex.jsonl --collections_file source/statute.jsonl --eval_type token_f1|retrieval --no_log
+▶ Token-level F1   : 0.2675
+▶ Retrieval Precision: 0.2242
+▶ Retrieval   Recall : 0.2102
+▶ Retrieval       F1 : 0.2150
+▶ Retrieval       EM : 0.0708

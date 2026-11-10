@@ -1,0 +1,8 @@
+$ python3 -I reproduction/scripts/bm25_variants.py .
+# run on 2026-11-10 06:21 UTC, Python 3.13.18, bm25s 0.3.16
+
+repo (English tokenizer)     F1@gold-k= 21.4  R@10= 32.2  R@30= 41.6  R@100= 51.8  (10s)
+Korean char bigrams          F1@gold-k= 37.4  R@10= 53.2  R@30= 66.2  R@100= 75.6  (13s)
+real	0m24.932s
+user	0m23.598s
+sys	0m1.043s
