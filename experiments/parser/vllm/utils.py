@@ -103,7 +103,10 @@ def save_jsonl(data_list: List[dict], output_path: str) -> None:
 
 def get_reranker(model="dragonkue/bge-reranker-v2-m3-ko"):
     """Get a CrossEncoder reranker model."""
-    model = CrossEncoder(model, default_activation_function=torch.nn.Sigmoid(), device='cuda')
+    try:  # sentence-transformers >= 4 renamed the argument
+        model = CrossEncoder(model, activation_fn=torch.nn.Sigmoid(), device='cuda')
+    except TypeError:
+        model = CrossEncoder(model, default_activation_function=torch.nn.Sigmoid(), device='cuda')
     return model
 
 

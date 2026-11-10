@@ -24,7 +24,8 @@ async def create_prompts(data_list: List[Dict[str, Any]]) -> List[str]:
         provisions = item.get('selected_provisions', [])
         
         # Create full prompt with system and instruction
-        full_prompt = f"{SYSTEM_PROMPT}\n\n{INSTRUCTION_PROMPT.substitute(question=question, context_str='\n'.join(provisions))}"
+        context_str = "\n".join(provisions)  # backslash inside an f-string expression is a SyntaxError before Python 3.12
+        full_prompt = f"{SYSTEM_PROMPT}\n\n{INSTRUCTION_PROMPT.substitute(question=question, context_str=context_str)}"
         prompts.append(full_prompt)
     
     return prompts
